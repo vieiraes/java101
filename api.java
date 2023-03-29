@@ -48,6 +48,7 @@ public class api {
                 String fileName = folder + title + ".png";
                 InputStream inputStream = new URL(urlImage).openStream();
 
+                // TODO:
                 // EXECUTION
                 stickerGenerate.generate(inputStream, fileName);
             }
