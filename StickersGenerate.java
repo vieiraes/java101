@@ -32,16 +32,19 @@ public class StickersGenerate {
         var fontType = new Font(Font.SANS_SERIF, Font.BOLD, 64);
         newImage.setFont(fontType);
         newImage.setColor(Color.YELLOW);
-        newImage.drawString("TOPZERA", 100, fileHeight - 100);
+        newImage.drawString("TEXTO", 100, fileHeight - 100);
 
-        // String newFileName = "arquivo";
+        // String folderPath = "static/images/";
+        // var folder = new File(folderPath);
+        // folder.mkdir();
+
         // SAVE IMAGE
         ImageIO.write(bufferedImage, "png", new File(fileName));
-
     }
-
-    // public static void main(String[] args) throws Exception {
-    // var makeImage = new StickersGenerate();
-    // makeImage.generate();
-    // }
 }
+
+// public static void main(String[] args) throws Exception {
+// var makeImage = new StickersGenerate();
+// makeImage.generate();
+// }
+// }}

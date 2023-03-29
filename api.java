@@ -7,8 +7,10 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
 
 public class api {
+
     public static void main(String[] args) throws Exception {
 
         String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
@@ -20,32 +22,34 @@ public class api {
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         String body = response.body();
 
-        var parser = new jsonParser(); // puxar de outra classe
+        var parser = new jsonParser();
         List<Map<String, String>> moviesList = parser.parse(body);
 
         // AULA1
-        // for (Map<String, String> filme : moviesList) {
-        // System.out.println(filme.get("title"));
-        // System.out.println(filme.get("image"));
-        // System.out.println(filme.get("imDbRating"));
-        // System.out.println();
-        // }
-        // System.out.println(url);
+        for (Map<String, String> filme : moviesList) {
+            System.out.println(filme.get("title"));
+            System.out.println(filme.get("image"));
+            System.out.println(filme.get("imDbRating"));
+            System.out.println();
+        }
+        System.out.println(url);
 
         // AULA 2
+
         try {
-            var stickerGenerate = new StickersGenerate();
+            String folderPath = "static/images/";
+            var folder = new File(folderPath);
+            folder.mkdir();
+
             for (Map<String, String> filme : moviesList) {
+                var stickerGenerate = new StickersGenerate();
                 String urlImage = filme.get("image");
                 String title = filme.get("title");
+                String fileName = folder + title + ".png";
                 InputStream inputStream = new URL(urlImage).openStream();
-
-                String fileName = title + ".png";
 
                 // EXECUTION
                 stickerGenerate.generate(inputStream, fileName);
-                System.out.println(title);
-                System.out.println();
             }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
