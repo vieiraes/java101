@@ -1,3 +1,5 @@
+package classes;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -13,11 +15,8 @@ public class StickersGenerate {
         // "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg")
         // .openStream();
         BufferedImage originalFile = ImageIO.read(inputStream);
-
-        // SETTING SIZE
         int fileWidht = originalFile.getWidth();
         int fileHeight = originalFile.getHeight() + 200;
-
         BufferedImage bufferedImage = new BufferedImage(fileWidht, fileHeight, BufferedImage.TRANSLUCENT);
         // String size = Integer.toString(fileHeight) + " " +
         // Integer.toString(fileWidht);
